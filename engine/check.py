@@ -11,7 +11,7 @@ import sys
 
 import click
 
-from util.click_util import CommaSeperatedStrings, cli_help
+from util.click_util import CommaSeparatedStrings, cli_help
 from util.dataframe_ops import check_stats_file_with_tolerances, compute_division
 from util.log_handler import logger
 
@@ -36,7 +36,7 @@ from util.log_handler import logger
 )
 @click.option(
     "--stats-types",
-    type=CommaSeperatedStrings(),
+    type=CommaSeparatedStrings(),
     default=["max", "mean", "min"],
     help=cli_help["stats_types"],
 )

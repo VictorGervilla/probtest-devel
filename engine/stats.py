@@ -12,7 +12,7 @@ from pathlib import Path
 
 import click
 
-from util.click_util import CommaSeperatedInts, CommaSeperatedStrings, cli_help
+from util.click_util import CommaSeparatedInts, CommaSeparatedStrings, cli_help
 from util.dataframe_ops import df_from_file_ids
 from util.log_handler import logger
 from util.utils import prepend_type_to_member_id
@@ -53,7 +53,7 @@ def create_stats_dataframe(input_dir, file_id, stats_file_name, file_specificati
 )
 @click.option(
     "--member-ids",
-    type=CommaSeperatedInts(),
+    type=CommaSeparatedInts(),
     default="1,2,3,4,5,6,7,8,9,10",
     help=cli_help["member_ids"],
 )
@@ -74,7 +74,7 @@ def create_stats_dataframe(input_dir, file_id, stats_file_name, file_specificati
 )
 @click.option(
     "--stats-types",
-    type=CommaSeperatedStrings(),
+    type=CommaSeparatedStrings(),
     default=["max", "mean", "min"],
     help=cli_help["stats_types"],
 )

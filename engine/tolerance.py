@@ -11,7 +11,7 @@ import sys
 import click
 import pandas as pd
 
-from util.click_util import CommaSeperatedInts, CommaSeperatedStrings, cli_help
+from util.click_util import CommaSeparatedInts, CommaSeparatedStrings, cli_help
 from util.dataframe_ops import (
     compute_rel_diff_dataframe,
     force_monotonic,
@@ -31,7 +31,7 @@ from util.log_handler import logger
 )
 @click.option(
     "--member-ids",
-    type=CommaSeperatedInts(),
+    type=CommaSeparatedInts(),
     default="1,2,3,4,5,6,7,8,9,10",
     help=cli_help["member_ids"],
 )
@@ -43,7 +43,7 @@ from util.log_handler import logger
 )
 @click.option(
     "--stats-types",
-    type=CommaSeperatedStrings(),
+    type=CommaSeparatedStrings(),
     default=["max", "mean", "min"],
     help=cli_help["stats_types"],
 )
