@@ -11,7 +11,7 @@ import sys
 import click
 import pandas as pd
 
-from util.click_util import CommaSeperatedInts, cli_help
+from util.click_util import CommaSeperatedInts, CommaSeperatedStrings, cli_help
 from util.dataframe_ops import (
     compute_rel_diff_dataframe,
     force_monotonic,
@@ -41,7 +41,15 @@ from util.log_handler import logger
     default="",
     help=cli_help["member_type"],
 )
-def tolerance(stats_file_name, tolerance_file_name, member_ids, member_type):
+@click.option(
+    "--stats-types",
+    type=CommaSeperatedStrings(),
+    default=["max", "mean", "min"],
+    help=cli_help["stats_types"],
+)
+def tolerance(
+    stats_file_name, tolerance_file_name, member_ids, member_type, stats_types
+):  # pylint: disable=unused-argument
 
     # read in stats files
     dfs = [

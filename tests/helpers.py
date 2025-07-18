@@ -96,6 +96,7 @@ def run_tolerance_cli(
     tolerance_file_name,
     member_type=None,
     member_ids="1,2,3,4,5,6,7,8,9,10",
+    stats_types=["max", "mean", "min"],
 ):
     args = [
         "--stats-file-name",
@@ -104,6 +105,8 @@ def run_tolerance_cli(
         tolerance_file_name,
         "--member-ids",
         member_ids,
+        "--stats-types",
+        stats_types,
     ]
     if member_type is not None:
         args.append("--member-type")
@@ -140,7 +143,11 @@ def run_perturb_cli(model_input_dir, files, perturb_amplitude, member_ids=range(
 
 
 def run_stats_cli(
-    model_output_dir, stats_file_name, ensemble, perturbed_model_output_dir=None
+    model_output_dir,
+    stats_file_name,
+    ensemble,
+    perturbed_model_output_dir=None,
+    stats_types=["max", "mean", "min"],
 ):
     args = [
         "--model-output-dir",
@@ -162,6 +169,8 @@ def run_stats_cli(
                 }
             }
         ],
+        "--stats-types",
+        stats_types,
     ]
     args += (
         ["--perturbed-model-output-dir", perturbed_model_output_dir]

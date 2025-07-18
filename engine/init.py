@@ -14,7 +14,7 @@ from pathlib import Path
 import click
 from jinja2 import Environment, FileSystemLoader, StrictUndefined
 
-from util.click_util import CommaSeperatedInts, cli_help
+from util.click_util import CommaSeperatedInts, CommaSeperatedStrings, cli_help
 from util.log_handler import logger
 
 
@@ -82,6 +82,12 @@ from util.log_handler import logger
     default=False,
     help=cli_help["append_time"],
 )
+@click.option(
+    "--stats-types",
+    type=CommaSeperatedStrings(),
+    default=["max", "mean", "min"],
+    help=cli_help["stats_types"],
+)
 def init(
     codebase_install,
     experiment_name,
@@ -96,7 +102,8 @@ def init(
     timing_current,
     timing_reference,
     append_time,
-):  # pylint: disable=too-many-positional-arguments
+    stats_types,
+):  # pylint: disable=too-many-positional-arguments, disable=unused-argument
 
     template_partition = str(template_name).rpartition("/")
     env = Environment(

@@ -177,6 +177,8 @@ cli_help = {
     + "reference.",
     "new_reference_threshold": r"The factor by which the current time can be faster "
     + r"than the reference before a warning gets printed.",
+    "stats_types": r"Select statistics to apply over horizontal dimension "
+    + " values (e.g. mean) of each variable.",
 }
 
 del dataframe_ops
